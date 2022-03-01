@@ -1,0 +1,13 @@
+﻿@model IEnumerable<WebAppSavePrivateNotes.Models.Note>
+@{
+    ViewData["Title"] = "Список заметок";
+}
+<div>
+    <p>Список заметок</p>
+    @foreach(var item in Model)
+    {
+        <p>@item.Text</p>
+        <p>@item.Time.ToString("f")</p>
+    }
+</div>
+

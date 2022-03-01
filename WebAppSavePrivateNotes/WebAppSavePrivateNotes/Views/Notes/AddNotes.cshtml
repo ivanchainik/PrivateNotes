@@ -1,0 +1,13 @@
+﻿@model WebAppSavePrivateNotes.Models.Note
+@{
+    ViewData["Title"] = "Создание заметок";
+}
+<form asp-action="addNotes" asp-controller="notes">
+    <div class="form-group">
+        <label asp-for="Text" class="control-label">Имя</label>
+        <textarea type="text" asp-for="Text" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-default" />
+    </div>
+</form>
