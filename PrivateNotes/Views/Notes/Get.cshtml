@@ -1,0 +1,16 @@
+﻿@model IEnumerable<PrivateNotes.Models.Note>
+@{
+    ViewData["Title"] = "Список заметок";
+}
+
+<p>Список заметок:</p>
+@foreach(var item in Model)
+{
+    <ul class="navbar-nav flex-grow-1";>
+    @item.Text
+    <li class="nav-item" display: inline-block;>
+        <small><em>@item.Time.ToString("f")</em></small>
+    </li>
+    </ul>
+    <br>
+}
