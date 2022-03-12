@@ -35,7 +35,7 @@ namespace PrivateNotes.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = _userService.GetLogin(model);
+                User user = _userService.CheckLogin(model);
                 if (user != null)
                 {
                     await Authenticate(model.Email);

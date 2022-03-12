@@ -8,6 +8,8 @@ services:
     build:
       context: .
       dockerfile: PrivateNotes/Dockerfile
+    ports:
+      - "8081:80"
 
 
   postgres:

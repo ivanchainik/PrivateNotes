@@ -2,7 +2,6 @@
 using PrivateNotes.Models;
 using System;
 using System.Linq;
-using Microsoft.AspNetCore.Http;
 
 namespace PrivateNotes.Services
 {
@@ -10,22 +9,19 @@ namespace PrivateNotes.Services
     {
         private readonly ApplicationContext _context;
 
-        private readonly IHttpContextAccessor _httpContextAccesor;
 
-        private IUserService _userManagerService;
+        private IUserService _userService;
 
-        public NoteService(ApplicationContext context, IUserService userManagerService, IHttpContextAccessor httpContextAccessor)
+        public NoteService(ApplicationContext context, IUserService userService)
         {
             _context = context;
-            _userManagerService = userManagerService;
-            _httpContextAccesor = httpContextAccessor;
+            _userService = userService;
         }
 
         public int Count()
         {
-            string emailUser = _httpContextAccesor.HttpContext.User.Identity.Name;
 
-            int userId = _userManagerService.GetUserId(emailUser);
+            int userId = _userService.GetUserId();
 
             int countOfNotes = _context.Notes.Where(p => p.UserId == userId).Count();
 
@@ -35,16 +31,14 @@ namespace PrivateNotes.Services
 
         public List<Note> Get()
         {
-            string emailUser = _httpContextAccesor.HttpContext.User.Identity.Name;
-            int userId = _userManagerService.GetUserId(emailUser);
+            int userId = _userService.GetUserId();
             List<Note> notes = _context.Notes.Where(p => p.UserId == userId).ToList();
             return notes;
         }
 
         public void Create(string textOfNotes)
         {
-            string emailUser = _httpContextAccesor.HttpContext.User.Identity.Name;
-            int userId = _userManagerService.GetUserId(emailUser);
+            int userId = _userService.GetUserId();
             if (userId != 0)
             {
                 DateTime time = DateTime.Now;

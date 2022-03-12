@@ -6,11 +6,11 @@ namespace PrivateNotes.Services
 {
     public interface IUserService
     {
-        public int GetUserId(string userEmail);
+        public int GetUserId();
 
         public void Add(RegisterModel model);
 
         public User GetRegister(RegisterModel model);
-        public User GetLogin(LoginModel model);
+        public User CheckLogin(LoginModel model);
     }
 }
