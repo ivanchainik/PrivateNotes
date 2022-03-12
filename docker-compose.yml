@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  privatenotes:
+    image: ${DOCKER_REGISTRY-}privatenotes
+    depends_on:
+      - "postgres"
+    build:
+      context: .
+      dockerfile: PrivateNotes/Dockerfile
+    ports:
+      - "8081:80"
+
+
+  postgres:
+    image: postgres:13.6-alpine
+    hostname: 'postgresserver'
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "PrivateNotes"

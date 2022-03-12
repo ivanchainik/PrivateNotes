@@ -13,9 +13,7 @@
 * Ввести в терминале следующие команды:<br>
    * `docker-compose  -f "docker-compose.yml" -f "docker-compose.override.yml" -p dockercompose --ansi never build`
    * `docker-compose  -f "docker-compose.yml" -f "docker-compose.override.yml" -p dockercompose --ansi never up -d --no-build`
-* Контейнеры запущены, необходимо узнать порт. Для этого введем команду:
-  *  `docker ps`
-*  На экране появится список рабочих контейнеров, в разделе PORTS скопируем порт из образа privatenotes и введем адрес в строке в формате `localhost:[скопированный хост]`<br>
+* Контейнеры запущены, осталось перейти по адресу `localhost:8081`<br>
 
 Наслаждаемся приложением:)<br>
 

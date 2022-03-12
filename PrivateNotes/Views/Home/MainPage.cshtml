@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Главная";
+}
+
+<div class="text-center">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <h1>Количество заметок: @ViewBag.Count</h1>
+    }
+    else
+    {
+        <h1>PrivateNotes</h1>
+    }
+</div>
